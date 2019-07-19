@@ -77,19 +77,16 @@ f :=2
 def find_floor(n,f):
 
 work like recursive binary search:
-#find middle
-middle=(n[0] + n[-1])//2
+#find middle as current floor
+current=(n[0] + n[-1])//2
 
-if len(n) == 0:
-    #first base case, in case f is not in n
-    return -1
-if n[middle] == f:
-    #second base case, success, we found it
+if egg breaks on current but DOESN'T break on current-1:
+    #base case, success, we found it
     return middle
-elif n[middle]>f:
+elif egg breaks on current AND on current-1
     # floor is lower
     return find_floor(n[:middle], f)
-else:
+else: egg doesn't break
     # floor is further up
     return find_floor(n[middle:], f)
 

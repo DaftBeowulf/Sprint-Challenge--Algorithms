@@ -1,5 +1,7 @@
 Add your answers to the Algorithms exercises here.
 
+Exercise I:
+
 ```
 a) O(n) (linear)
 
@@ -61,5 +63,38 @@ def bunnyEars(bunnies):
  3            3
 
  essentially just counts down recursively from n, so scales with n
+
+```
+
+Exercise II:
+
+```
+
+
+n := [1,2,3,4,5]
+f :=2
+
+def find_floor(n,f):
+
+work like recursive binary search:
+#find middle
+middle=(n[0] + n[-1])//2
+
+if len(n) == 0:
+    #first base case, in case f is not in n
+    return -1
+if n[middle] == f:
+    #second base case, success, we found it
+    return middle
+elif n[middle]>f:
+    # floor is lower
+    return find_floor(n[:middle], f)
+else:
+    # floor is further up
+    return find_floor(n[middle:], f)
+
+
+Binary search improves with speed with every loop, so runtime complexity --> O(log n)
+
 
 ```

@@ -109,10 +109,13 @@ class SortingRobot:
             # so move right, and pick up new one
             self.move_right()
             self.swap_item()
+            return True
         else:
             # empty spot was on the last spot (didn't move in any move lefts)
             # array is fully sorted, so turn light on
-            self.set_light_on()
+
+            # without using light, just return false and outer scope will break the while loop
+            return False
 
     def sort(self):
         """
@@ -120,7 +123,7 @@ class SortingRobot:
         """
         # start by picking up first item
         self.swap_item()
-        while not self.light_is_on():
+        while True:
             # not at end of list
             if self.can_move_right():
                 # spot is empty and can move right, so move right and pick up item there
@@ -143,7 +146,8 @@ class SortingRobot:
                     self.swap_item()
 
                 # if compared item is bigger or the spot is empty, just go back for new run
-                self.move_left_to_empty()
+                if self.move_left_to_empty() == False:
+                    break
 
 
 if __name__ == "__main__":

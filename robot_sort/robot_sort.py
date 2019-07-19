@@ -95,6 +95,11 @@ class SortingRobot:
         return self._light == "ON"
 
     def move_left_to_empty(self):
+        """
+        Moves robot left to empty spot to start new sorting pass. If robot doesn't move
+        left and is still at the end of the list, declare the sorting
+        to be finished by turning the light on
+        """
         # move left until finding empty spot, drop item
         while self.compare_item() != None:
             self.move_left()
@@ -116,8 +121,9 @@ class SortingRobot:
         # start by picking up first item
         self.swap_item()
         while not self.light_is_on():
-            # spot is empty and can move right, so move right and pick up item there
+            # not at end of list
             if self.can_move_right():
+                # spot is empty and can move right, so move right and pick up item there
                 if self.compare_item() == None:
                     self.move_right()
                 # if compared item is smaller, swap and move to next
@@ -127,8 +133,9 @@ class SortingRobot:
                 # if held item is smaller or equal, keep and move to next
                 elif self.compare_item() == -1 or self.compare_item() == 0:
                     self.move_right()
+            # at end of list
             else:
-                # if at end, check last item and see if needing to swap
+                # check last item and see if needing to swap
                 # , then move left to empty for new run
 
                 # if compared item is smaller, swap and go back for new run

@@ -44,3 +44,22 @@ suppose n:=5/6/7/8/9/10
 
  as n scales upwards, total loops scale the same amount + 3 -- linear
 ```
+
+```
+c)  O(n)
+
+def bunnyEars(bunnies):
+      if bunnies == 0:
+        return 0
+
+      return 2 + bunnyEars(bunnies-1)
+
+  n     loop executions
+---    ---------------
+ 1            1
+ 2            2
+ 3            3
+
+ essentially just counts down recursively from n, so scales with n
+
+```

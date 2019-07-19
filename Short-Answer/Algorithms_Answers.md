@@ -19,32 +19,27 @@ a) O(n) (linear)
 ```
 
 ```
-b) O(n)
-
-suppose n:=5/6/7/8/9/10
+b) O(n^3)
 
   sum = 0
-    for i in range(n): # 5/6/7/8/9/10
+    for i in range(n): # occurs n times
       i += 1
-      for j in range(i + 1, n): # 3/4/5/6/7/8
+      for j in range(i + 1, n): # occurs n-1 times
         j += 1
-        for k in range(j + 1, n): #1/2/3/4/5/6
+        for k in range(j + 1, n): # occurs n-2 time
           k += 1
-          for l in range(k + 1, 10 + k): # 10/10/10/10/10/10
+          for l in range(k + 1, 10 + k): # occurs 10 times
             l += 1
             sum += 1
 
-  n     loop executions
----    ---------------
+  n     total loop executions (as evidenced by new sum value)
+---    ------------------------------------------------------
  <5            0
- 5            19
- 6            22
- 7            25
- 8            28
- 9            31
- 10           34
+ 5            99
+ 6            423
+ 7            1125
 
- as n scales upwards, total loops scale the same amount + 3 -- linear
+as input scales upwards, loop executions scale (n*n-1*n-2*10), where n^3 is the dominant term
 ```
 
 ```
